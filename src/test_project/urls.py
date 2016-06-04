@@ -19,4 +19,5 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', 'boletin.views.inicio', name='inicio'),
+    url(r'^sobre-nosotros/$', 'boletin.views.sobre', name='sobre-nosotros'),
 ]

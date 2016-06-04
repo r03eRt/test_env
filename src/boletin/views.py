@@ -29,3 +29,14 @@ def inicio(request):
 
 
     return render(request, "inicio.html", context)
+
+
+
+def sobre(request):
+    titulo = "Sobre Nosotros"
+
+    context = {
+        "titulo": titulo,
+    }
+
+    return render(request, "sobre-nosotros.html", context)
