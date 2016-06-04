@@ -31,4 +31,5 @@ def inicio(request):
         #obj2.nombre = abc
         #obj2.save()
         #fin segunda forma
+
     return render(request, "inicio.html", context)
