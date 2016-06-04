@@ -1,8 +1,10 @@
-<h1>{{titulo_template}}</h1>
+<h1>{{titulo}}</h1>
 
 <form action="" method="POST">
     {% csrf_token %}
     {{form.as_p}}
+    {% if form %}
     <input type="submit" value="Registrarse">
+    {% endif %}
 </form>
 

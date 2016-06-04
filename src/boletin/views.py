@@ -8,14 +8,24 @@ from .models import Registrado
 def inicio(request):
     titulo = "Bienvenidos"
     form = RegistradoForm(request.POST or None) #sin validaciones
+
+    context = {
+        "titulo": titulo,
+        "form": form
+    }
+
     if form.is_valid():
         instance = form.save(commit=False)#antes de guardar muestro el email hacemos cosas ese comit es no guardarlo
+        nombre = form.cleaned_data.get("nombre")#cojo el nombre anterior
         form.save()
-        print instance.email
-        print instance.timestamp
-    context = {
-        "titulo_template":titulo,
-        "form":form
-    }
+        context = {
+            "titulo":"Gracias por tu registro %s" %(nombre) #cojo el nombre anterir y lo muestro si todo ok
+        }
+        if not nombre:
+            email = form.cleaned_data.get("email")
+            context = {
+                "titulo": "Gracias %s, ya se ha registrado" %(email)
+            }
+
 
     return render(request, "inicio.html", context)
