@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .forms import RegistradoForm
 from .models import Registrado
 
 
@@ -6,10 +7,15 @@ from .models import Registrado
 
 def inicio(request):
     titulo = "Bienvenidos"
-    if request.user.is_authenticated():
-        titulo = "Bienvenido %s!" %(request.user)
+    form = RegistradoForm(request.POST or None) #sin validaciones
+    if form.is_valid():
+        instance = form.save(commit=False)#antes de guardar muestro el email hacemos cosas ese comit es no guardarlo
+        form.save()
+        print instance.email
+        print instance.timestamp
     context = {
-        "titulo_template": titulo
+        "titulo_template":titulo,
+        "form":form
     }
 
     return render(request, "inicio.html", context)
