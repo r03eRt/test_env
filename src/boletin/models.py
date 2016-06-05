@@ -11,6 +11,7 @@ class Registrado(models.Model):
     codigo_postal = models.IntegerField(blank=True, null=True)
     timestamp = models.DateTimeField(auto_now_add=True, auto_now=False)
     actualizado = models. DateTimeField(auto_now_add=False, auto_now=True)
+    media = models.FileField(upload_to='myfolder/', blank=True, null=True) #no poner barra antes de la carpeta
 
     def __unicode__(self): #python 3 __str__
         return self.email

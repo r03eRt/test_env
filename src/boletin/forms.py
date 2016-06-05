@@ -10,7 +10,7 @@ class RegistradoForm(forms.ModelForm):
         #modelo que suamos
         model = Registrado
         #campos que usaremos
-        fields = ["nombre","email"]
+        fields = ["nombre","email","media"]
 
     def clean_email(self):
         email = self.cleaned_data.get("email")

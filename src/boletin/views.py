@@ -7,7 +7,7 @@ from .models import Registrado
 
 def inicio(request):
     titulo = "Bienvenidos"
-    form = RegistradoForm(request.POST or None) #sin validaciones
+    form = RegistradoForm(request.POST or None, request.FILES or None) #sin validaciones
 
     context = {
         "titulo": titulo,
