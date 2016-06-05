@@ -8,10 +8,18 @@ from .models import Registrado
 def inicio(request):
     titulo = "Bienvenidos"
     form = RegistradoForm(request.POST or None, request.FILES or None) #sin validaciones
+    #querys
+    queryset = Registrado.objects.all()
+
+    for obj in queryset:
+        print obj.id
+        print obj.nombre
+        print obj.email
 
     context = {
         "titulo": titulo,
-        "form": form
+        "form": form,
+        "queryset": queryset
     }
 
     if form.is_valid():
